@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>로컬 창직 컨설팅 랜딩페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --teal: #00796B;
+      --teal-light: #E0F2F1;
+      --orange: #E76F51;
+      --orange-light: #FFF5F3;
+      --gray-bg: #F9FAFB;
+      --text-main: #111827;
+      --text-muted: #4B5563;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Noto Sans KR", sans-serif;
+      color: var(--text-main);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 공통 레이아웃 */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /* 상단 네비게이션 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.5rem;
+    }
+
+    .navbar-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--teal);
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .navbar-menu a {
+      color: var(--teal);
+      opacity: 0.9;
+      transition: opacity 0.2s ease;
+      font-weight: 500;
+    }
+
+    .navbar-menu a:hover {
+      opacity: 0.6;
+    }
+
+    .navbar-toggle {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--teal);
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 6.5rem;
+      padding-bottom: 4.5rem;
+      background: #ffffff;
+    }
+
+    .hero-inner {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: var(--teal);
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.45rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background-color: var(--orange);
+      color: #ffffff;
+      margin-top: 0.5rem;
+    }
+
+    .hero-cta-wrap {
+      margin-top: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2.4rem;
+      border-radius: 0.8rem;
+      border: none;
+      background-color: var(--orange);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(231, 111, 81, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(231, 111, 81, 0.45);
+    }
+
+    .btn-primary span.icon {
+      font-size: 1rem;
+    }
+
+    /* 섹션 타이틀 공통 */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    /* Problem 섹션 */
+    .section-gray {
+      background-color: var(--gray-bg);
+    }
+
+    .problem-main-card {
+      background-color: #ffffff;
+      border-radius: 1.5rem;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.16);
+      margin-bottom: 1.7rem;
+    }
+
+    .problem-main-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .problem-item {
+      text-align: center;
+    }
+
+    .problem-icon {
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto 1rem;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+
+    .problem-icon.teal {
+      background-color: rgba(0, 121, 107, 0.13);
+      color: var(--teal);
+    }
+
+    .problem-icon.orange {
+      background-color: rgba(231, 111, 81, 0.13);
+      color: var(--orange);
+    }
+
+    .problem-item-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .problem-item-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .problem-bottom-text {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    /* Solution 섹션 */
+    .solution-highlight {
+      background: linear-gradient(135deg, #E0F2F1, #ffffff);
+      border-radius: 1.5rem;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .solution-highlight-title {
+      font-size: 1.3rem;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .solution-highlight-text {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .solution-highlight-text strong {
+      color: var(--teal);
+    }
+
+    .table-wrap {
+      background-color: #ffffff;
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background-color: var(--teal);
+      color: #ffffff;
+    }
+
+    thead th {
+      padding: 0.9rem 1rem;
+      text-align: left;
+    }
+
+    thead th:last-child {
+      background-color: var(--orange);
+    }
+
+    tbody td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tbody tr:nth-child(2) {
+      background-color: #F3F4F6;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .consultant-card {
+      margin-top: 2rem;
+      padding: 1.7rem 1.8rem;
+      border-radius: 1.1rem;
+      border: 2px solid var(--teal);
+      background-color: #ffffff;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .consultant-icon {
+      font-size: 2rem;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .consultant-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .consultant-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Benefits 섹션 */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .benefit-card {
+      background-color: #ffffff;
+      border-radius: 1.2rem;
+      padding: 1.8rem 1.7rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .benefit-card:hover {
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16);
+      transform: translateY(-2px);
+    }
+
+    .benefit-icon {
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      color: #ffffff;
+    }
+
+    .benefit-icon.teal {
+      background-color: var(--teal);
+    }
+
+    .benefit-icon.orange {
+      background-color: var(--orange);
+    }
+
+    .benefit-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.6rem;
+    }
+
+    .benefit-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Trust 섹션 */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .trust-card {
+      background-color: #ffffff;
+      border-radius: 1.2rem;
+      padding: 1.7rem 1.7rem;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+      border-left: 4px solid var(--teal);
+    }
+
+    .trust-card.secondary {
+      border-left-color: var(--orange);
+    }
+
+    .trust-card-title {
+      font-size: 1.05rem;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+
+    .trust-card-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .trust-partners {
+      border-radius: 1.4rem;
+      padding: 2rem 2rem;
+      background: linear-gradient(90deg, #E0F2F1, #FFF5E9);
+    }
+
+    .trust-partners-title {
+      text-align: center;
+      font-size: 1.3rem;
+      color: var(--teal);
+      margin-bottom: 1.4rem;
+      font-weight: 700;
+    }
+
+    .trust-partners-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .trust-partner-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .trust-partner-icon {
+      font-size: 1.3rem;
+      color: var(--teal);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .trust-partner-title {
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.3rem;
+      font-size: 0.98rem;
+    }
+
+    .trust-partner-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .trust-quote {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* Pricing 섹션 */
+    .pricing-card {
+      background-color: #ffffff;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 16px 44px rgba(15, 23, 42, 0.18);
+    }
+
+    .pricing-top {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-normal {
+      padding: 1.8rem;
+      background-color: #F3F4F6;
+      text-align: center;
+    }
+
+    .pricing-normal-title {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .pricing-normal-price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #9CA3AF;
+      text-decoration: line-through;
+    }
+
+    .pricing-special {
+      padding: 1.8rem;
+      background-color: var(--teal);
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .pricing-special-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .pricing-special-price {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+
+    .pricing-special-tag {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .pricing-benefits {
+      padding: 1.7rem 2rem;
+      background: linear-gradient(135deg, #FFF7ED, #ffffff);
+    }
+
+    .pricing-benefits-title {
+      text-align: center;
+      font-size: 1.05rem;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-benefit-item {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      margin-bottom: 0.7rem;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .pricing-benefit-icon {
+      font-size: 1.1rem;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .pricing-benefit-item span strong {
+      font-weight: 700;
+    }
+
+    .pricing-deadline {
+      padding: 1rem 1.2rem;
+      border-top: 2px solid var(--orange);
+      background-color: var(--orange-light);
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--orange);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .pricing-deadline-icon {
+      font-size: 1.1rem;
+    }
+
+    /* CTA 섹션 */
+    .cta-section {
+      background-color: #ffffff;
+    }
+
+    .cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .cta-title {
+        font-size: 2.3rem;
+      }
+    }
+
+    .cta-text-main {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.7rem;
+    }
+
+    .cta-text-sub {
+      font-size: 0.98rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .cta-box {
+      border-radius: 1.8rem;
+      padding: 2.4rem 2rem;
+      background: linear-gradient(135deg, #E0F2F1, #FFE8D9);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.16);
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 2.6rem;
+      border-radius: 0.9rem;
+      border: none;
+      background-color: var(--orange);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(231, 111, 81, 0.5);
+      margin-bottom: 1.1rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(231, 111, 81, 0.6);
+    }
+
+    .cta-btn-icon {
+      font-size: 1.1rem;
+    }
+
+    .cta-note {
+      font-size: 0.95rem;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #E5E7EB;
+      padding: 2.5rem 0;
+      background-color: #ffffff;
+    }
+
+    .footer-text-main {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      color: #4B5563;
+    }
+
+    .footer-text-sub {
+      font-size: 0.8rem;
+      color: #6B7280;
+    }
+
+    /* 반응형 */
+    @media (min-width: 640px) {
+      .problem-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .trust-partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pricing-top {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 56px;
+        right: 1.5rem;
+        flex-direction: column;
+        background-color: #ffffff;
+        padding: 0.8rem 1rem;
+        border-radius: 0.8rem;
+        box-shadow: 0 10px 26px rgba(15, 23, 42, 0.18);
+      }
+      .navbar-menu.show {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="navbar-logo">로컬 창직 컨설팅</div>
+      <nav class="navbar-menu" id="navbarMenu">
+        <a href="#problem">문제</a>
+        <a href="#solution">솔루션</a>
+        <a href="#benefits">혜택</a>
+        <a href="#trust">신뢰</a>
+        <a href="#pricing">가격</a>
+        <a href="#cta">신청</a>
+      </nav>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="메뉴 열기/닫기">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero 섹션 -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1 class="hero-title">지역을 떠나야만 할까요?</h1>
+      <p class="hero-subtitle">
+        대전의 숨겨진 지식 자산으로,<br />
+        월 300만원 이상 소규모 고부가가치 창직 모델을 만드세요.
+      </p>
+      <div class="hero-badge">
+        부트캠프 신청 마감 임박
+      </div>
+      <div class="hero-cta-wrap">
+        <button class="btn-primary" onclick="scrollToSection('cta')">
+          지금 바로 신청하기
+          <span class="icon">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem 섹션 -->
+  <section id="problem" class="section-gray">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🚨 당신이 지역을 떠나야만 하는 이유</h2>
+        <p class="section-subtitle" style="font-style: italic;">
+          "내 능력과 관심사를 펼칠 '제대로 된' 일자리가 이 지역엔 없다."
+        </p>
+      </div>
+
+      <div class="problem-main-card">
+        <p class="problem-main-text">
+          지역 정착을 꿈꾸는 당신은 누구보다 지역을 사랑하고, 잠재력도 높습니다. 하지만 현실은 냉혹합니다.
+        </p>
+
+        <div class="problem-grid">
+          <div class="problem-item">
+            <div class="problem-icon teal">📈</div>
+            <div class="problem-item-title">고수익 일자리 부재</div>
+            <p class="problem-item-text">
+              내 커리어를 성장시킬 양질의 일자리가 부족합니다.
+            </p>
+          </div>
+
+          <div class="problem-item">
+            <div class="problem-icon teal">🎯</div>
+            <div class="problem-item-title">창직의 막막함</div>
+            <p class="problem-item-text">
+              막연한 아이디어는 있지만, 구체적인 로드맵이 없습니다.
+            </p>
+          </div>
+
+          <div class="problem-item">
+            <div class="problem-icon orange">📍</div>
+            <div class="problem-item-title" style="color: var(--orange);">
+              결국 타지역 이탈
+            </div>
+            <p class="problem-item-text">
+              시간만 낭비하다 결국 서울/수도권으로 떠나야 한다는 좌절감.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-bottom-text">
+        저희는 이 문제를 로컬 콘텐츠 재구성 전문 컨설팅으로 해결합니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution 섹션 -->
+  <section id="solution">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">✨ 로컬 콘텐츠 기반 일자리 재구성 컨설팅의 해답</h2>
+        <p class="section-subtitle">
+          우리의 컨설팅은 대전 지역의 높은 접근성과 우수한 인재 풀을 당신의 '창직 자산'으로 전환합니다.
+        </p>
+      </div>
+
+      <div class="solution-highlight">
+        <h3 class="solution-highlight-title">핵심 가치 제안</h3>
+        <p class="solution-highlight-text">
+          지역 내 숨겨진 지식 자산을 활용하여 청년에게 맞는<br />
+          <strong>'소규모, 고부가가치 일자리'</strong>를 창직할 수 있도록 돕습니다.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>기존 창업 교육의 한계</th>
+              <th>우리의 차별점</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>지역 자산 활용</td>
+              <td>막연한 아이템 발굴에 그침</td>
+              <td>지역 자산 각색</td>
+            </tr>
+            <tr>
+              <td>수익 모델</td>
+              <td>대규모 투자 유치에만 집중</td>
+              <td>소규모 고수익 BM</td>
+            </tr>
+            <tr>
+              <td>실행 가능성</td>
+              <td>실질적 수익 모델 구축 실패</td>
+              <td>전문성 기반 로드맵</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="consultant-card">
+        <div class="consultant-icon">🏅</div>
+        <div>
+          <div class="consultant-name">컨설턴트 민주원</div>
+          <p class="consultant-text">
+            기업 보험 영업, 지자체 창업지원 사업 운영 경험을 바탕으로
+            '기존 작품을 각색하여 양질의 콘텐츠를 만드는' 전문적인 BM 재구성 솔루션을 제공합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits 섹션 -->
+  <section id="benefits" class="section-gray">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🚀 당신이 얻게 될 3가지 실질적인 변화</h2>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon teal">✅</div>
+          <div class="benefit-title">[가치 발굴] 지역 지식 자산 → 고유 콘텐츠</div>
+          <p class="benefit-text">
+            지역의 숨겨진 역사, 문화, 인재 풀을 당신의 전문성과 결합하여
+            독점적 콘텐츠로 재구성하는 방법론을 습득합니다.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon orange">📈</div>
+          <div class="benefit-title">[BM 구축] 1인 고수익 창직 모델 확보</div>
+          <p class="benefit-text">
+            억 단위 투자가 아닌, 당신의 지식과 기술을 기반으로
+            월 최소 300만원 이상의 안정적 수익을 창출하는 설계도를 완성합니다.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon teal">👥</div>
+          <div class="benefit-title">[네트워킹] 지역 정주 기반 확보</div>
+          <p class="benefit-text">
+            대전일자리경제진흥원, 지자체 사업 등 필수 협력 기관과의 연계 방안을 제시받아,
+            사업 초기 안정적인 지원을 확보합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust 섹션 -->
+  <section id="trust">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🤝 지역 정주 전문가와 공식 기관의 파트너십</h2>
+        <p class="section-subtitle">
+          저희는 단순한 교육이 아닌, 실제 지역 정주 및 경제 활동을 목표로 합니다.
+        </p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-card-title">MVP 계획</div>
+          <p class="trust-card-text">
+            '대전 지역 콘텐츠 기반 창직 부트캠프' 4주 온라인 웨비나를 통해
+            지역 콘텐츠를 1인 지식 창업 아이템으로 각색/재구성하는 실습 워크숍을
+            무료(또는 최소 비용)로 운영합니다.
+          </p>
+        </div>
+
+        <div class="trust-card secondary">
+          <div class="trust-card-title">첫 번째 검증 대상</div>
+          <p class="trust-card-text">
+            대전 지역 대학생 및 콘텐츠 창작 관심 청년 10명 내외의 초기 베타테스터를 통해
+            실질적 효용성을 검증합니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="trust-partners">
+        <div class="trust-partners-title">
+          필수 협력 기관 (지역 정주 로드맵 연계)
+        </div>
+        <div class="trust-partners-grid">
+          <div class="trust-partner-item">
+            <div class="trust-partner-icon">✔</div>
+            <div>
+              <div class="trust-partner-title">대전광역시</div>
+              <p class="trust-partner-text">
+                청년 일자리 및 지역 정주 지원 정책 연계
+              </p>
+            </div>
+          </div>
+
+          <div class="trust-partner-item">
+            <div class="trust-partner-icon">✔</div>
+            <div>
+              <div class="trust-partner-title">대전일자리경제진흥원</div>
+              <p class="trust-partner-text">
+                창업지원 사업 수주 및 청년 네트워킹 확보
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-quote">
+        "당신의 잠재력은 충분합니다. 이제 실행 가능한 '방법'과 '협력 파트너'가 필요합니다."
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing 섹션 -->
+  <section id="pricing" class="section-gray">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🎁 [선착순 10명] 초기 베타 테스터 특별 혜택</h2>
+        <p class="section-subtitle">
+          저희의 목표는 창직 모델 검증입니다. 따라서 초기 참여자에게는 파격적인 혜택을 제공합니다.
+        </p>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-top">
+          <div class="pricing-normal">
+            <div class="pricing-normal-title">일반 수강료 (4주 과정)</div>
+            <div class="pricing-normal-price">₩399,000</div>
+          </div>
+          <div class="pricing-special">
+            <div class="pricing-special-title">초기 베타테스터 특별 가격</div>
+            <div class="pricing-special-price">₩19,900</div>
+            <div class="pricing-special-tag">95% 할인</div>
+          </div>
+        </div>
+
+        <div class="pricing-benefits">
+          <div class="pricing-benefits-title">특별 혜택</div>
+          <div class="pricing-benefit-item">
+            <div class="pricing-benefit-icon">✔</div>
+            <span><strong>혜택 1:</strong> 1:1 창직 아이템 '각색/재구성' 컨설팅 1회 (30분) 무료</span>
+          </div>
+          <div class="pricing-benefit-item">
+            <div class="pricing-benefit-icon">✔</div>
+            <span><strong>혜택 2:</strong> 지자체 창업 지원 사업 가이드북 (PDF) 제공</span>
+          </div>
+        </div>
+
+        <div class="pricing-deadline">
+          <span class="pricing-deadline-icon">⏰</span>
+          <span>마감일: 2025년 12월 31일 (선착순 마감 시 조기 종료)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA 섹션 -->
+  <section id="cta" class="cta-section">
+    <div class="container cta-inner">
+      <h2 class="cta-title">
+        🔥 지금 행동하세요.<br />
+        당신의 정착은 선택이 아닌 기회입니다.
+      </h2>
+      <p class="cta-text-main">
+        더 이상 희망 없는 일자리 때문에 지역을 떠날 고민을 하지 마세요.<br />
+        대전의 자원을 당신의 자산으로 바꾸는 구체적인 방법론을 바로 지금 시작할 수 있습니다.
+      </p>
+      <p class="cta-text-sub">
+        지역 정주와 고수익 창직의 기회는 빠르게 움직이는 사람에게만 주어집니다.
+      </p>
+
+      <div class="cta-box">
+        <!-- 실제 신청 링크 있으면 href를 수정하세요 -->
+        <a href="#" onclick="alert('신청 링크를 연결해 주세요.'); return false;">
+          <button class="cta-btn">
+            신청 바로가기
+            <span class="cta-btn-icon">→</span>
+          </button>
+        </a>
+        <div class="cta-note">
+          선착순 10명 마감 전에, 당신의 자리를 확보하세요!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p class="footer-text-main">로컬 콘텐츠 기반 일자리 재구성 컨설팅</p>
+      <p class="footer-text-sub">대전광역시 | 문의: contact@localcareer.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // 모바일 메뉴 토글
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+
+    if (navbarToggle && navbarMenu) {
+      navbarToggle.addEventListener('click', function () {
+        navbarMenu.classList.toggle('show');
+      });
+
+      // 메뉴 클릭 후 자동 닫기 (모바일)
+      navbarMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navbarMenu.classList.remove('show');
+        });
+      });
+    }
+
+    // 버튼용 스크롤 함수
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
